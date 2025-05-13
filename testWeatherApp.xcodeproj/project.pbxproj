@@ -21,6 +21,7 @@
 		BE0E01AA2DD34CD400EBF0DB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01A92DD34CD400EBF0DB /* NetworkService.swift */; };
 		BE0E01AC2DD3546200EBF0DB /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01AB2DD3546200EBF0DB /* ForecastResponse.swift */; };
 		BE0E01AF2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01AE2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift */; };
+		BE0E01B12DD3D21100EBF0DB /* DateFormatter.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B02DD3D21100EBF0DB /* DateFormatter.Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		BE0E01A92DD34CD400EBF0DB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BE0E01AB2DD3546200EBF0DB /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		BE0E01AE2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.Ext.swift; sourceTree = "<group>"; };
+		BE0E01B02DD3D21100EBF0DB /* DateFormatter.Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.Ext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				BE0E01AE2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift */,
+				BE0E01B02DD3D21100EBF0DB /* DateFormatter.Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE0E01B12DD3D21100EBF0DB /* DateFormatter.Ext.swift in Sources */,
 				BE0E017F2DD32D0400EBF0DB /* AppDelegate.swift in Sources */,
 				BE0E01AC2DD3546200EBF0DB /* ForecastResponse.swift in Sources */,
 				BE0E01A82DD34B7200EBF0DB /* URLManager.swift in Sources */,

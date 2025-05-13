@@ -43,7 +43,6 @@ final class WeatherViewModel: ObservableObject {
                 let forecastData = try await NetworkService.shared.getForecast(city: city)
                 await MainActor.run {
                     self.forecast = forecastData
-                    self.extractHourlyForecast()
                 }
             } catch {
                 print(error.localizedDescription)

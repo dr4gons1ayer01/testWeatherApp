@@ -13,7 +13,7 @@ struct WeatherView: View {
     var body: some View {
         ScrollView {
             
-            VStack(spacing: 12) {
+            VStack(spacing: 22) {
                 //Search
                 HStack(spacing: 20) {
                     TextField("Введите город", text: $viewModel.cityName)
@@ -93,8 +93,63 @@ struct WeatherView: View {
                     .cornerRadius(24)
                 }
             }
-            //TableView
-            
+            //forecast 7 day(3 in free api plan)
+            if let forecast = viewModel.forecast {
+                VStack(alignment: .leading, spacing: 22) {
+                    Text("Прогноз на 7 дней")
+                        .font(FontManager.bold)
+                        .foregroundColor(.white)
+
+                    ForEach(forecast.forecast.forecastday) { day in
+                        HStack {
+                            Text(day.weekdayShort)
+                                .font(FontManager.regular)
+                                .frame(width: 40, alignment: .leading)
+                                .foregroundColor(.white)
+
+                            AsyncImage(url: URL(string: "https:\(day.day.condition.icon)")) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 24, height: 24)
+
+                            Text(day.day.condition.text)
+                                .font(FontManager.regular)
+                                .foregroundColor(.white)
+
+                            Spacer()
+
+                            Text("\(day.minTemp)°")
+                                .font(FontManager.regular)
+                                .foregroundColor(.white)
+
+                            //tempBar
+                            ZStack(alignment: .leading) {
+                                Capsule()
+                                    .frame(width: 60, height: 4)
+                                    .foregroundColor(.white.opacity(0.3))
+
+                                let range = CGFloat(max(day.maxTemp - day.minTemp, 1))
+                                Capsule()
+                                    .frame(width: range * 3, height: 4)
+                                    .foregroundColor(.cyan)
+                            }
+
+                            Text("\(day.maxTemp)°")
+                                .font(FontManager.regular)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .padding()
+                .background(
+                    LinearGradient(colors: [Color("componentBg"), .white.opacity(0.1), Color("componentBg")],
+                                   startPoint: .topLeading,
+                                   endPoint: .bottom))
+                .cornerRadius(24)
+            }
         }
         .padding()
         .background(Image("bg")
