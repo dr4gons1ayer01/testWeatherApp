@@ -38,16 +38,16 @@ struct WeatherView: View {
                 //CurrentWeather
                 if let weather = viewModel.currentWeather {
                     VStack(spacing: 12) {
-                        Text(weather.location.name)
+                        Text(weather.location.name ?? "Город")
                             .font(FontManager.bold)
-                        Text("\(Int(weather.current.tempC))˚C")
+                        Text("\(Int(weather.current.tempC ?? 0))˚C")
                             .font(FontManager.largeBold)
                         VStack {
-                            Text("\(weather.current.humidity)% влажность")
+                            Text("\(weather.current.humidity ?? 0)% влажность")
                                 .font(FontManager.regular)
-                            Text(weather.current.condition.text)
+                            Text(weather.current.condition?.text ?? "—")
                                 .font(FontManager.bold)
-                            Text("Ветер: \(Int(weather.current.windKph / 3.6)) м/с")
+                            Text("Ветер: \(Int((weather.current.windKph ?? 0) / 3.6)) м/с")
                                 .font(FontManager.regular)
                         }
                     }
@@ -86,6 +86,11 @@ struct WeatherView: View {
                         }
                         .padding(.horizontal)
                     }
+                    .background(
+                        LinearGradient(colors: [Color("componentBg"), .white.opacity(0.1), Color("componentBg")],
+                                       startPoint: .topLeading,
+                                       endPoint: .bottom))
+                    .cornerRadius(24)
                 }
             }
             //TableView

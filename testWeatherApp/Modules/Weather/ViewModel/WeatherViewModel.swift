@@ -10,7 +10,11 @@ import Foundation
 final class WeatherViewModel: ObservableObject {
     @Published var cityName = "Moscow"
     @Published var currentWeather: CurrentWeatherResponse?
-    @Published var forecast: ForecastResponse?
+    @Published var forecast: ForecastResponse? {
+        didSet {
+            extractHourlyForecast()
+        }
+    }
     @Published var hourlyForecast: [ForecastResponse.Hour] = []
     
     init() {
