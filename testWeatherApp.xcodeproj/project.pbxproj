@@ -22,6 +22,10 @@
 		BE0E01AC2DD3546200EBF0DB /* ForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01AB2DD3546200EBF0DB /* ForecastResponse.swift */; };
 		BE0E01AF2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01AE2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift */; };
 		BE0E01B12DD3D21100EBF0DB /* DateFormatter.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B02DD3D21100EBF0DB /* DateFormatter.Ext.swift */; };
+		BE0E01B42DD3D67000EBF0DB /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B32DD3D67000EBF0DB /* SearchBarView.swift */; };
+		BE0E01B62DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B52DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift */; };
+		BE0E01B82DD3D84300EBF0DB /* HourlyForecastScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B72DD3D84300EBF0DB /* HourlyForecastScrollView.swift */; };
+		BE0E01BA2DD3D98500EBF0DB /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B92DD3D98500EBF0DB /* DailyForecastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		BE0E01AB2DD3546200EBF0DB /* ForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.swift; sourceTree = "<group>"; };
 		BE0E01AE2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastResponse.Ext.swift; sourceTree = "<group>"; };
 		BE0E01B02DD3D21100EBF0DB /* DateFormatter.Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.Ext.swift; sourceTree = "<group>"; };
+		BE0E01B32DD3D67000EBF0DB /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		BE0E01B52DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCardView.swift; sourceTree = "<group>"; };
+		BE0E01B72DD3D84300EBF0DB /* HourlyForecastScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastScrollView.swift; sourceTree = "<group>"; };
+		BE0E01B92DD3D98500EBF0DB /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +128,7 @@
 		BE0E01962DD32E0A00EBF0DB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE0E01B22DD3D65300EBF0DB /* Parts */,
 				BE0E01A52DD3323D00EBF0DB /* WeatherView.swift */,
 				BE0E01982DD32E3900EBF0DB /* WeatherViewController.swift */,
 			);
@@ -172,6 +181,17 @@
 				BE0E01B02DD3D21100EBF0DB /* DateFormatter.Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		BE0E01B22DD3D65300EBF0DB /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				BE0E01B32DD3D67000EBF0DB /* SearchBarView.swift */,
+				BE0E01B52DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift */,
+				BE0E01B72DD3D84300EBF0DB /* HourlyForecastScrollView.swift */,
+				BE0E01B92DD3D98500EBF0DB /* DailyForecastView.swift */,
+			);
+			path = Parts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,12 +268,16 @@
 				BE0E01B12DD3D21100EBF0DB /* DateFormatter.Ext.swift in Sources */,
 				BE0E017F2DD32D0400EBF0DB /* AppDelegate.swift in Sources */,
 				BE0E01AC2DD3546200EBF0DB /* ForecastResponse.swift in Sources */,
+				BE0E01B82DD3D84300EBF0DB /* HourlyForecastScrollView.swift in Sources */,
 				BE0E01A82DD34B7200EBF0DB /* URLManager.swift in Sources */,
 				BE0E019E2DD32F9100EBF0DB /* CurrentWeatherResponse.swift in Sources */,
 				BE0E01AF2DD37D4C00EBF0DB /* ForecastResponse.Ext.swift in Sources */,
+				BE0E01BA2DD3D98500EBF0DB /* DailyForecastView.swift in Sources */,
 				BE0E019C2DD32F7B00EBF0DB /* WeatherViewModel.swift in Sources */,
 				BE0E01AA2DD34CD400EBF0DB /* NetworkService.swift in Sources */,
 				BE0E01992DD32E3900EBF0DB /* WeatherViewController.swift in Sources */,
+				BE0E01B62DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift in Sources */,
+				BE0E01B42DD3D67000EBF0DB /* SearchBarView.swift in Sources */,
 				BE0E01A22DD3318400EBF0DB /* FontManager.swift in Sources */,
 				BE0E01A62DD3323D00EBF0DB /* WeatherView.swift in Sources */,
 				BE0E01812DD32D0400EBF0DB /* SceneDelegate.swift in Sources */,
