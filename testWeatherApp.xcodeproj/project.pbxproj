@@ -26,6 +26,7 @@
 		BE0E01B62DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B52DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift */; };
 		BE0E01B82DD3D84300EBF0DB /* HourlyForecastScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B72DD3D84300EBF0DB /* HourlyForecastScrollView.swift */; };
 		BE0E01BA2DD3D98500EBF0DB /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01B92DD3D98500EBF0DB /* DailyForecastView.swift */; };
+		BE0E01BD2DD461E700EBF0DB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E01BC2DD461E700EBF0DB /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		BE0E01B52DD3D7BE00EBF0DB /* CurrentWeatherCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCardView.swift; sourceTree = "<group>"; };
 		BE0E01B72DD3D84300EBF0DB /* HourlyForecastScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastScrollView.swift; sourceTree = "<group>"; };
 		BE0E01B92DD3D98500EBF0DB /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
+		BE0E01BC2DD461E700EBF0DB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		BE0E01922DD32DD900EBF0DB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				BE0E01BB2DD461D600EBF0DB /* Location */,
 				BE0E019F2DD32FCF00EBF0DB /* Networking */,
 			);
 			path = Services;
@@ -194,6 +197,14 @@
 			path = Parts;
 			sourceTree = "<group>";
 		};
+		BE0E01BB2DD461D600EBF0DB /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				BE0E01BC2DD461E700EBF0DB /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -266,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0E01B12DD3D21100EBF0DB /* DateFormatter.Ext.swift in Sources */,
+				BE0E01BD2DD461E700EBF0DB /* LocationManager.swift in Sources */,
 				BE0E017F2DD32D0400EBF0DB /* AppDelegate.swift in Sources */,
 				BE0E01AC2DD3546200EBF0DB /* ForecastResponse.swift in Sources */,
 				BE0E01B82DD3D84300EBF0DB /* HourlyForecastScrollView.swift in Sources */,

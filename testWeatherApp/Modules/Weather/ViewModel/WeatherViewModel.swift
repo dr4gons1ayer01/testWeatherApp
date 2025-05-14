@@ -6,65 +6,78 @@
 //
 
 import Foundation
+import Combine
+import CoreLocation
+
+enum LoadingState {
+    case idle
+    case loading
+    case loaded
+    case failed(Error)
+}
 
 final class WeatherViewModel: ObservableObject {
     @Published var cityName = "Moscow"
     @Published var currentWeather: CurrentWeatherResponse?
-    @Published var forecast: ForecastResponse? {
-        didSet {
-            extractHourlyForecast()
-        }
-    }
+    @Published var forecast: ForecastResponse?
     @Published var hourlyForecast: [ForecastResponse.Hour] = []
-    
+    @Published var state: LoadingState = .idle
+
+    private let locationManager = LocationManager()
+    private var cancellables = Set<AnyCancellable>()
+
     init() {
-        fetchCurrentWeather()
+        locationManager.requestLocation()
+        ///subscription for successful
+        locationManager.$location
+            .compactMap { $0 }
+            .first()
+            .sink { [weak self] location in
+                let coordinates = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
+                self?.fetchWeather(for: coordinates)
+            }
+            .store(in: &cancellables)
+
+        ///fallback to "Moscow"
+        locationManager.$authorizationStatus
+            .sink { [weak self] status in
+                guard let self else { return }
+                if status == .denied || status == .restricted {
+                    self.fetchWeather(for: "Moscow")
+                }
+            }
+            .store(in: &cancellables)
     }
-    
-    func fetchCurrentWeather() {
+
+    func fetchWeather(for query: String) {
+        self.state = .loading
         Task {
             do {
-                let weather = try await NetworkService.shared.getCurrentWeather(city: self.cityName)
+                let weather = try await NetworkService.shared.getCurrentWeather(city: query)
+                let forecastData = try await NetworkService.shared.getForecast(city: query)
+
                 await MainActor.run {
-                    let city = self.cityName
-                    self.cityName = ""
                     self.currentWeather = weather
-                    self.fetchForecast(for: city)
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-        
-    func fetchForecast(for city: String) {
-        Task {
-            do {
-                let forecastData = try await NetworkService.shared.getForecast(city: city)
-                await MainActor.run {
                     self.forecast = forecastData
+                    self.cityName = ""
+                    self.extractHourlyForecast(from: forecastData)
+                    self.state = .loaded
                 }
             } catch {
+                self.state = .failed(error)
                 print(error.localizedDescription)
             }
         }
     }
-    
-    private func extractHourlyForecast() {
-        guard let forecast = forecast else { return }
 
-        _ = Calendar.current
+    private func extractHourlyForecast(from forecast: ForecastResponse) {
         let now = Date()
-
         ///day 1: current time
         let todayHours = forecast.forecast.forecastday.first?.hour.filter {
-            guard let hourDate = $0.date else { return false }
-            return hourDate > now
+            $0.date.map { $0 > now } ?? false
         } ?? []
-
         ///day 2: all time
         let tomorrowHours = forecast.forecast.forecastday.dropFirst().first?.hour ?? []
-
         self.hourlyForecast = todayHours + tomorrowHours
     }
 }
