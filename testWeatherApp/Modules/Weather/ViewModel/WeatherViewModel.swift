@@ -9,11 +9,19 @@ import Foundation
 import Combine
 import CoreLocation
 
+enum LoadingState {
+    case idle
+    case loading
+    case loaded
+    case failed(Error)
+}
+
 final class WeatherViewModel: ObservableObject {
     @Published var cityName = "Moscow"
     @Published var currentWeather: CurrentWeatherResponse?
     @Published var forecast: ForecastResponse?
     @Published var hourlyForecast: [ForecastResponse.Hour] = []
+    @Published var state: LoadingState = .idle
 
     private let locationManager = LocationManager()
     private var cancellables = Set<AnyCancellable>()
@@ -42,6 +50,7 @@ final class WeatherViewModel: ObservableObject {
     }
 
     func fetchWeather(for query: String) {
+        self.state = .loading
         Task {
             do {
                 let weather = try await NetworkService.shared.getCurrentWeather(city: query)
@@ -52,8 +61,10 @@ final class WeatherViewModel: ObservableObject {
                     self.forecast = forecastData
                     self.cityName = ""
                     self.extractHourlyForecast(from: forecastData)
+                    self.state = .loaded
                 }
             } catch {
+                self.state = .failed(error)
                 print(error.localizedDescription)
             }
         }
