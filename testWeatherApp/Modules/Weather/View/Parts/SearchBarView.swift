@@ -15,7 +15,8 @@ struct SearchBarView: View {
         HStack(spacing: 20) {
             TextField("Введите город", text: $cityName)
                 .padding(8)
-                .background(.white)
+                .background(.componentBg)
+                .foregroundStyle(.white)
                 .cornerRadius(8)
                 .font(FontManager.bold)
                 .submitLabel(.search)

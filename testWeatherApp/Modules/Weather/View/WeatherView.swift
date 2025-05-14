@@ -14,7 +14,7 @@ struct WeatherView: View {
         ScrollView {
             VStack(spacing: 22) {
                 SearchBarView(cityName: $viewModel.cityName) {
-                    viewModel.fetchCurrentWeather()
+                    viewModel.fetchWeather(for: viewModel.cityName)
                 }
                 if let weather = viewModel.currentWeather {
                     CurrentWeatherCardView(weather: weather)
